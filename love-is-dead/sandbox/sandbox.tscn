@@ -63,6 +63,10 @@ offset = Vector2(0, -648)
 shape = SubResource("WorldBoundaryShape2D_q3tir")
 
 [node name="Player" parent="." unique_id=1520943966 instance=ExtResource("1_vos54")]
+<<<<<<< HEAD
 
 [node name="Dummy" parent="." unique_id=482613324 instance=ExtResource("2_6gs2s")]
 position = Vector2(64, 98)
+=======
+position = Vector2(0, 587)
+>>>>>>> 1c5b5e5b5ae5cfe4a561bbd3081feac512b9fda3
