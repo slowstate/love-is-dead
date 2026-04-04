@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://b1b8k16nahj2v"]
 
-[ext_resource type="PackedScene" uid="uid://cga4sdhwe3a6r" path="res://player/player.tscn" id="1_vos54"]
+<<<<<<< HEAD
+[ext_resource type="PackedScene" uid="uid://5ti12df0l4tp" path="res://player/player.tscn" id="1_vos54"]
 [ext_resource type="PackedScene" uid="uid://c201l8guxiqhp" path="res://enemy/dummy/dummy.tscn" id="2_6gs2s"]
+=======
+[ext_resource type="PackedScene" uid="uid://cga4sdhwe3a6r" path="res://player/player.tscn" id="1_vos54"]
+>>>>>>> 1c5b5e5b5ae5cfe4a561bbd3081feac512b9fda3
 
 [sub_resource type="Gradient" id="Gradient_q3tir"]
 offsets = PackedFloat32Array(0)
@@ -63,7 +67,10 @@ offset = Vector2(0, -648)
 shape = SubResource("WorldBoundaryShape2D_q3tir")
 
 [node name="Player" parent="." unique_id=1520943966 instance=ExtResource("1_vos54")]
-position = Vector2(0, 587)
+<<<<<<< HEAD
 
 [node name="Dummy" parent="." unique_id=482613324 instance=ExtResource("2_6gs2s")]
-position = Vector2(226, 578)
+position = Vector2(64, 98)
+=======
+position = Vector2(0, 587)
+>>>>>>> 1c5b5e5b5ae5cfe4a561bbd3081feac512b9fda3
