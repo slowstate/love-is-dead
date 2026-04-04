@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GlobalInstances="*uid://dq22byhugnkpy"
+GlobalConstants="*uid://c178cuej6ijq0"
 
 [display]
 

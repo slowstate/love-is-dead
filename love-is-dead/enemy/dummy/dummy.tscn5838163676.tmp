@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c201l8guxiqhp"]
+
+[ext_resource type="Script" uid="uid://d3dvf5uqhh6em" path="res://enemy/dummy/dummy.gd" id="1_k06qw"]
+[ext_resource type="Texture2D" uid="uid://b0pfxj0do2qk0" path="res://icon.svg" id="1_tgf5e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k06qw"]
+size = Vector2(46, 42)
+
+[node name="Dummy" type="CharacterBody2D" unique_id=482613324]
+script = ExtResource("1_k06qw")
+speed = null
+max_health = null
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=296050147]
+scale = Vector2(0.375, 0.34375)
+texture = ExtResource("1_tgf5e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=615238693]
+shape = SubResource("RectangleShape2D_k06qw")

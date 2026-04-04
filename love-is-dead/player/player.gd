@@ -10,7 +10,6 @@ extends CharacterBody2D
 @export var jump_velocity: float = -400.0
 @export var extra_jumps: int = 0
 
-var _gravity: float = 980.0
 var _jumps_remaining: int = 0
 
 
@@ -29,7 +28,7 @@ func _physics_process(delta: float) -> void:
 # --- Movement ----------------------------------------------------------------
 func _apply_gravity(delta: float) -> void:
 	if not is_on_floor():
-		velocity.y += _gravity * delta
+		velocity.y += GlobalConstants.gravity * delta
 
 
 func _handle_jump() -> void:
