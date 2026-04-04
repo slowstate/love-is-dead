@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://5ti12df0l4tp"]
+[gd_scene format=3 uid="uid://cga4sdhwe3a6r"]
 
 [ext_resource type="Script" uid="uid://ck0itwqj3h41c" path="res://player/player.gd" id="1_oul6g"]
 
@@ -20,6 +20,7 @@ script = ExtResource("1_oul6g")
 ground_friction = 0.7
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=370156447]
+process_callback = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=138132720]
 texture = SubResource("GradientTexture2D_g1dw6")
