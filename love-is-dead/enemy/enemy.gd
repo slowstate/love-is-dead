@@ -12,8 +12,11 @@ var health_bar: ProgressBar
 
 func _ready() -> void:
 	player = GlobalInstances.player
+	add_to_group("Enemies")	
 	current_health = max_health
 	generate_ui()
+
+
 
 func _physics_process(delta: float) -> void:
 	_apply_gravity(delta)
@@ -44,7 +47,7 @@ func take_damage(damage: float):
 	if damage >= 0.0:
 		current_health -= damage
 		update_health_bar()
-		if current_health < 0:
+		if current_health <= 0:
 			current_health = 0
 			queue_free()
 

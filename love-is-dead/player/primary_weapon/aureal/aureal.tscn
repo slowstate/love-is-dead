@@ -23,7 +23,7 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_o0ctc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1997621796]
-position = Vector2(7, 0)
+position = Vector2(10, 0)
 shape = SubResource("CircleShape2D_o0ctc")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=2015112653]
