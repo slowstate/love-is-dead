@@ -43,4 +43,6 @@ func _on_body_entered(_body: Node2D) -> void:
 
 
 func _on_enemy_entered(_body: Node2D) -> void:
-	queue_free()
+	if _body != null:
+		_body.take_damage(base_damage)
+		queue_free()

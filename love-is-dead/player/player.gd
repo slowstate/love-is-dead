@@ -15,9 +15,6 @@ const AUREAL = preload("uid://dwbtboe4r72fg")
 # --- Combat ---
 @export var primary_weapon: PrimaryWeapon.Type
 
-# --- Internal Parameters -----------------------------------------------------
-# --- Movement ---
-var _gravity: float = 980.0
 var _jumps_remaining: int = 0
 # --- Combat ----
 var _primary_weapon_cooldown_remaining: float = 0.0
@@ -39,7 +36,7 @@ func _physics_process(delta: float) -> void:
 # --- Movement ----------------------------------------------------------------
 func _apply_gravity(delta: float) -> void:
 	if not is_on_floor():
-		velocity.y += _gravity * delta
+		velocity.y += GlobalConstants.gravity * delta
 
 
 func _handle_jump() -> void:

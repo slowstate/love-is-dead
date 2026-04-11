@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://b1b8k16nahj2v"]
 
 [ext_resource type="PackedScene" uid="uid://cga4sdhwe3a6r" path="res://player/player.tscn" id="1_vos54"]
+[ext_resource type="PackedScene" uid="uid://c201l8guxiqhp" path="res://enemy/dummy/dummy.tscn" id="2_6gs2s"]
+[ext_resource type="Script" uid="uid://i3d782jnmfbg" path="res://sandbox/enemy_counter.gd" id="3_djyae"]
+[ext_resource type="Script" uid="uid://cohoikeomgs7m" path="res://sandbox/spawn_enemy_button.gd" id="3_id76k"]
 
 [sub_resource type="Gradient" id="Gradient_q3tir"]
 offsets = PackedFloat32Array(0)
@@ -23,7 +26,28 @@ normal = Vector2(1, 0)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_q3tir"]
 normal = Vector2(-1, 0)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6gs2s"]
+size = Vector2(2246, 204)
+
 [node name="Sandbox" type="Node2D" unique_id=1314145246]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=568878381]
+
+[node name="SpawnEnemyButton" type="Button" parent="CanvasLayer" unique_id=649742348]
+offset_left = 1018.0
+offset_top = 46.0
+offset_right = 1134.0
+offset_bottom = 77.0
+text = "Spawn Enemy"
+script = ExtResource("3_id76k")
+enemy_scene = ExtResource("2_6gs2s")
+
+[node name="EnemyCounter" type="Label" parent="CanvasLayer" unique_id=521524819]
+offset_left = 1023.0
+offset_top = 16.0
+offset_right = 1135.0
+offset_bottom = 39.0
+script = ExtResource("3_djyae")
 
 [node name="Stage" type="Node2D" parent="." unique_id=12590852]
 
@@ -61,5 +85,16 @@ offset = Vector2(0, -648)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/RightWall" unique_id=1402580094]
 shape = SubResource("WorldBoundaryShape2D_q3tir")
 
+[node name="Enemy_Spawn_Zone" type="Area2D" parent="Stage" unique_id=700872649]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/Enemy_Spawn_Zone" unique_id=769097075]
+position = Vector2(4, 516)
+shape = SubResource("RectangleShape2D_6gs2s")
+
+[node name="EnemyList" type="Node2D" parent="Stage" unique_id=623612382]
+position = Vector2(427, -265)
+
 [node name="Player" parent="." unique_id=1520943966 instance=ExtResource("1_vos54")]
 position = Vector2(0, 587)
+
+[connection signal="pressed" from="CanvasLayer/SpawnEnemyButton" to="CanvasLayer/SpawnEnemyButton" method="_on_pressed"]
