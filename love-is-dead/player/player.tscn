@@ -1,6 +1,13 @@
 [gd_scene format=3 uid="uid://cga4sdhwe3a6r"]
 
 [ext_resource type="Script" uid="uid://ck0itwqj3h41c" path="res://player/player.gd" id="1_oul6g"]
+[ext_resource type="Script" uid="uid://d1pvw6s4srx37" path="res://common/sfx_manager/sfx_manager.gd" id="2_rgyib"]
+[ext_resource type="AudioStream" uid="uid://cpcder6tvhmyk" path="res://audio/sfx/player_land/player_land_1.mp3" id="3_hg6s5"]
+[ext_resource type="AudioStream" uid="uid://664eygwcr3m4" path="res://audio/sfx/player_jump/player_jump_1.mp3" id="4_8t03j"]
+[ext_resource type="AudioStream" uid="uid://dtbebh2nqdmvy" path="res://audio/sfx/player_jump/player_jump_2.mp3" id="5_2ieo8"]
+[ext_resource type="AudioStream" uid="uid://xfawsg26jond" path="res://audio/sfx/player_jump/player_jump_3.mp3" id="6_ebec5"]
+[ext_resource type="AudioStream" uid="uid://pnkt0rstxoqb" path="res://audio/sfx/player_step/player_step_1.mp3" id="7_yllr7"]
+[ext_resource type="AudioStream" uid="uid://b57cqv6lvl36n" path="res://audio/sfx/player_shoot_arrow/player_shoot_arrow_1.mp3" id="8_kb6p2"]
 
 [sub_resource type="Gradient" id="Gradient_rkbax"]
 offsets = PackedFloat32Array(1)
@@ -27,3 +34,32 @@ texture = SubResource("GradientTexture2D_g1dw6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=51469829]
 shape = SubResource("RectangleShape2D_yw30f")
+
+[node name="PlayerAudio" type="Node2D" parent="." unique_id=122124088]
+script = ExtResource("2_rgyib")
+
+[node name="PlayerLand" type="Node2D" parent="PlayerAudio" unique_id=1013347221]
+
+[node name="PlayerLand1" type="AudioStreamPlayer2D" parent="PlayerAudio/PlayerLand" unique_id=1033295465]
+stream = ExtResource("3_hg6s5")
+
+[node name="PlayerJump" type="Node2D" parent="PlayerAudio" unique_id=1098700382]
+
+[node name="PlayerJump1" type="AudioStreamPlayer2D" parent="PlayerAudio/PlayerJump" unique_id=335418112]
+stream = ExtResource("4_8t03j")
+
+[node name="PlayerJump2" type="AudioStreamPlayer2D" parent="PlayerAudio/PlayerJump" unique_id=40929994]
+stream = ExtResource("5_2ieo8")
+
+[node name="PlayerJump3" type="AudioStreamPlayer2D" parent="PlayerAudio/PlayerJump" unique_id=1077944181]
+stream = ExtResource("6_ebec5")
+
+[node name="PlayerStep" type="Node2D" parent="PlayerAudio" unique_id=1979210453]
+
+[node name="PlayerStep1" type="AudioStreamPlayer2D" parent="PlayerAudio/PlayerStep" unique_id=1691488827]
+stream = ExtResource("7_yllr7")
+
+[node name="PlayerShootArrow" type="Node2D" parent="PlayerAudio" unique_id=1155986313]
+
+[node name="PlayerShootArrow1" type="AudioStreamPlayer2D" parent="PlayerAudio/PlayerShootArrow" unique_id=1763405179]
+stream = ExtResource("8_kb6p2")

@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://c42ukhypkn6a7" path="res://player/primary_weapon/aureal/aureal.gd" id="1_ryg2p"]
 [ext_resource type="Texture2D" uid="uid://cc0w6205kg7ve" path="res://player/primary_weapon/aureal/silver.png" id="2_o0ctc"]
+[ext_resource type="Script" uid="uid://d1pvw6s4srx37" path="res://common/sfx_manager/sfx_manager.gd" id="3_c0wk3"]
+[ext_resource type="AudioStream" uid="uid://b0uovkew1wdax" path="res://audio/sfx/arrow_hit_terrain/ArrowHitTerrain1.mp3" id="4_a3oaq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o0ctc"]
 radius = 4.0
@@ -33,3 +35,12 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1809574797]
 shape = SubResource("CapsuleShape2D_o0ctc")
+
+[node name="ArrowAudio" type="Node2D" parent="." unique_id=1432190212]
+script = ExtResource("3_c0wk3")
+
+[node name="ArrowHitTerrain" type="Node2D" parent="ArrowAudio" unique_id=284903291]
+
+[node name="ArrowHitTerrain1" type="AudioStreamPlayer2D" parent="ArrowAudio/ArrowHitTerrain" unique_id=258655931]
+stream = ExtResource("4_a3oaq")
+attenuation = 0.35355294

@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://46srwdp6e2lc"]
-
-[ext_resource type="Script" uid="uid://d1pvw6s4srx37" path="res://common/sfx_manager/sfx_manager.gd" id="1_hetwi"]
-
-[node name="SfxManager" type="Node2D" unique_id=1923112153]
-script = ExtResource("1_hetwi")

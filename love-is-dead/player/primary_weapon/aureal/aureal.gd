@@ -5,6 +5,7 @@ var _lifetime: float = 0.0
 var _fired: bool = false
 
 @onready var hitbox: Area2D = $Hitbox
+@onready var arrow_audio: SfxManager = $ArrowAudio
 
 
 func _init() -> void:
@@ -39,6 +40,7 @@ func try_fire(direction: Vector2) -> bool:
 
 
 func _on_body_entered(_body: Node2D) -> void:
+	arrow_audio.play_lasting_sfx("ArrowHitTerrain", 0.0, -10.0, -5.0, 0.9, 1.1)
 	queue_free()
 
 

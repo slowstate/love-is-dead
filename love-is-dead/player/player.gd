@@ -16,8 +16,12 @@ const AUREAL = preload("uid://dwbtboe4r72fg")
 @export var primary_weapon: PrimaryWeapon.Type
 
 var _jumps_remaining: int = 0
+var _was_on_floor: bool = false
+var _footsteps_timer: float = 0.0
 # --- Combat ----
 var _primary_weapon_cooldown_remaining: float = 0.0
+
+@onready var player_audio: Node2D = $PlayerAudio
 
 
 # --- Functions ---------------------------------------------------------------
@@ -30,6 +34,8 @@ func _physics_process(delta: float) -> void:
 	_apply_gravity(delta)
 	_handle_jump()
 	_handle_horizontal_movement(delta)
+	_detect_landing()
+	_handle_footsteps(delta)
 	move_and_slide()
 
 
@@ -53,6 +59,14 @@ func _handle_jump() -> void:
 
 func _perform_jump() -> void:
 	velocity.y = jump_velocity
+	player_audio.play_sfx("PlayerJump", 0.0, -20.0, -15.0, 0.9, 1.1)
+
+
+func _detect_landing() -> void:
+	var is_on_floor_now = is_on_floor()
+	if not _was_on_floor and is_on_floor_now:
+		player_audio.play_sfx("PlayerLand", 0.0, -15.0, -10.0, 0.9, 1.1)
+	_was_on_floor = is_on_floor_now
 
 
 func _handle_horizontal_movement(delta: float) -> void:
@@ -79,6 +93,19 @@ func _handle_horizontal_movement(delta: float) -> void:
 				velocity.x = lerp(velocity.x, input_dir * speed, air_friction)
 
 
+func _handle_footsteps(delta: float) -> void:
+	if is_on_floor() and velocity.x != 0.0:
+		var _current_speed = abs(velocity.x)
+
+		var _speed_ratio = clamp(_current_speed / (speed * 5), 0.0, 1.0)
+		var _footsteps_interval = lerp(0.6, 0.2, _speed_ratio)
+		_footsteps_timer -= delta
+
+		if _footsteps_timer <= 0.0 and _current_speed > 20.0:
+			player_audio.play_sfx("PlayerStep", 0.0, -10.0, -5.0, 0.9, 1.1)
+			_footsteps_timer = _footsteps_interval
+
+
 # --- Combat ------------------------------------------------------------------
 func _handle_primary_weapon(delta: float) -> void:
 	if _primary_weapon_cooldown_remaining > 0.0:
@@ -98,3 +125,4 @@ func _handle_primary_weapon(delta: float) -> void:
 		var direction: Vector2 = (get_global_mouse_position() - global_position).normalized()
 		new_primary_weapon.try_fire(direction)
 		get_tree().current_scene.add_child(new_primary_weapon)
+		player_audio.play_sfx("PlayerShootArrow", 0.0, -15.0, -10.0, 0.9, 1.1)
