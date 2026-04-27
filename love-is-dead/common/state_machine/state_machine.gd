@@ -32,12 +32,6 @@ func set_state(new_state_name: StringName) -> void:
 	_on_child_transition(new_state_name)
 
 
-# This function should be overriden by inheriting classes; no code should be added to this class
-func set_initial_state() -> void:
-	# Keep this empty as child nodes will override this function
-	pass
-
-
 func _on_child_transition(new_state_name: StringName) -> void:
 	var new_state = states.get(new_state_name)
 	if new_state != null:

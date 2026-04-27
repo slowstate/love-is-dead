@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dwbtboe4r72fg"]
 
-[ext_resource type="Script" uid="uid://c42ukhypkn6a7" path="res://player/primary_weapon/aureal/aureal.gd" id="1_ryg2p"]
-[ext_resource type="Texture2D" uid="uid://cc0w6205kg7ve" path="res://player/primary_weapon/aureal/silver.png" id="2_o0ctc"]
+[ext_resource type="Script" uid="uid://c42ukhypkn6a7" path="res://player/weapons/primary_weapons/allura/allura.gd" id="1_hxjm0"]
+[ext_resource type="Texture2D" uid="uid://cc0w6205kg7ve" path="res://player/weapons/primary_weapons/allura/silver.png" id="2_lnqup"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o0ctc"]
 radius = 4.0
@@ -9,18 +9,18 @@ radius = 4.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o0ctc"]
 radius = 5.0
 
-[node name="Aureal" type="RigidBody2D" unique_id=53122954]
+[node name="Allura" type="RigidBody2D" unique_id=53122954]
 collision_layer = 4
 continuous_cd = 1
 contact_monitor = true
 max_contacts_reported = 1
-script = ExtResource("1_ryg2p")
+script = ExtResource("1_hxjm0")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=74096141]
 modulate = Color(1.353256, 1.1442057, 0, 1)
 rotation = 1.5707964
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("2_o0ctc")
+texture = ExtResource("2_lnqup")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1997621796]
 position = Vector2(10, 0)

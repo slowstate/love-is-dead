@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bt1lgehxr2tp0"]
+
+[ext_resource type="Script" uid="uid://075f4exvwjy8" path="res://player/weapons/primary_weapons/allura/charm_component/charmed.gd" id="1_j3ndd"]
+
+[node name="Charmed" type="Node" unique_id=955311645]
+script = ExtResource("1_j3ndd")

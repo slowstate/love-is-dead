@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cjtjr7gfdpikv"]
+
+[ext_resource type="Script" uid="uid://ksg56masora" path="res://player/weapons/primary_weapons/allura/allure_component/allure.gd" id="1_mgp2r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cdy4y"]
+radius = 240.0
+
+[node name="Allure" type="Node2D" unique_id=1248534664]
+script = ExtResource("1_mgp2r")
+
+[node name="CharmArea2D" type="Area2D" parent="." unique_id=512011014]
+collision_layer = 0
+collision_mask = 8
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharmArea2D" unique_id=348247910]
+shape = SubResource("CircleShape2D_cdy4y")
+
+[node name="Timer" type="Timer" parent="." unique_id=233875917]
+one_shot = true
+
+[connection signal="body_entered" from="CharmArea2D" to="." method="_on_charm_area_2d_body_entered"]
+[connection signal="body_exited" from="CharmArea2D" to="." method="_on_charm_area_2d_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
