@@ -12,17 +12,14 @@ extends CharacterBody2D
 @export var extra_jumps: int = 0
 @export var ladder_climb_speed: float = 8000.0
 # --- Combat ---
-@export var primary_weapon_scene: PackedScene
-@export var secondary_weapon_scene: PackedScene
+@export var primary_weapon: Weapon
+@export var secondary_weapon: Weapon
 @export var ladder_tile_map_layer: TileMapLayer
 
 # --- Internal Parameters -----------------------------------------------------
 # --- Movement ---
 var _jumps_remaining: int = 0
 var _on_ladder: bool = false
-# --- Combat ----
-var _primary_weapon_cooldown_remaining: float = 0.0
-var _secondary_weapon_cooldown_remaining: float = 0.0
 
 @onready var ladder_detector_down: RayCast2D = $LadderDetectorDown
 @onready var ladder_detector_up: RayCast2D = $LadderDetectorUp
@@ -37,8 +34,10 @@ func _init() -> void:
 
 func _ready() -> void:
 	if GlobalInstances.player_weapon_loadout:
-		primary_weapon_scene = GlobalInstances.player_weapon_loadout.primary_weapon
-		secondary_weapon_scene = GlobalInstances.player_weapon_loadout.secondary_weapon
+		primary_weapon = GlobalInstances.player_weapon_loadout.primary_weapon.instantiate()
+		add_child(primary_weapon)
+		secondary_weapon = GlobalInstances.player_weapon_loadout.secondary_weapon.instantiate()
+		add_child(secondary_weapon)
 
 
 func _physics_process(delta: float) -> void:
@@ -156,27 +155,11 @@ func _handle_ladder_movement(delta: float) -> void:
 
 
 # --- Combat ------------------------------------------------------------------
-func _handle_primary_weapon(delta: float) -> void:
-	if _primary_weapon_cooldown_remaining > 0.0:
-		_primary_weapon_cooldown_remaining -= min(delta, _primary_weapon_cooldown_remaining)
-		return
-
-	if Input.is_action_pressed("player_primary_weapon_fire"):
-		if Input.is_action_pressed("player_primary_weapon_fire") and primary_weapon_scene:
-			var weapon := primary_weapon_scene.instantiate() as Weapon
-			weapon.global_position = global_position
-			get_tree().current_scene.add_child(weapon)
-			_primary_weapon_cooldown_remaining = weapon.cooldown
-			weapon.fire()
+func _handle_primary_weapon(_delta: float) -> void:
+	if Input.is_action_pressed("player_primary_weapon_fire") and primary_weapon:
+		primary_weapon.try_fire()
 
 
-func _handle_secondary_weapon(delta: float) -> void:
-	if _secondary_weapon_cooldown_remaining > 0.0:
-		_secondary_weapon_cooldown_remaining -= min(delta, _secondary_weapon_cooldown_remaining)
-		return
-	if Input.is_action_pressed("player_secondary_weapon_fire") and secondary_weapon_scene:
-		var weapon := secondary_weapon_scene.instantiate() as Weapon
-		weapon.global_position = get_global_mouse_position()
-		get_tree().current_scene.add_child(weapon)
-		_secondary_weapon_cooldown_remaining = weapon.cooldown
-		weapon.fire()
+func _handle_secondary_weapon(_delta: float) -> void:
+	if Input.is_action_pressed("player_secondary_weapon_fire") and secondary_weapon:
+		secondary_weapon.try_fire()
