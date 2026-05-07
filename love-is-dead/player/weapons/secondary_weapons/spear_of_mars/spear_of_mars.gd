@@ -10,7 +10,7 @@ func _init() -> void:
 	cooldown = 5.0
 
 
-func fire() -> void:
+func fire(direction: Vector2) -> void:
 	var spear: SpearOfMarsSpear = SPEAR_OF_MARS_SPEAR.instantiate()
 	spear.global_position = get_global_mouse_position()
 	spear.damage = _base_damage

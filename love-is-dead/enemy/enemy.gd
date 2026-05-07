@@ -1,9 +1,14 @@
 class_name Enemy
 extends CharacterBody2D
 
+signal died(enemy: Enemy)
+
 # --- External Parameters -----------------------------------------------------
 @export var speed: float = 100.0
 @export var max_health: float = 200.0
+@export var sprite: Sprite2D
+@export var collision_box: CollisionShape2D
+@export var hurtbox: Area2D
 
 var current_health: float
 var health_bar_template = preload("res://enemy/enemy_ui/enemy_health_bar.tscn")
@@ -41,6 +46,7 @@ func take_damage(damage: float):
 		update_health_bar()
 		if current_health <= 0:
 			current_health = 0
+			died.emit(self)
 			queue_free()
 
 

@@ -157,9 +157,11 @@ func _handle_ladder_movement(delta: float) -> void:
 # --- Combat ------------------------------------------------------------------
 func _handle_primary_weapon(_delta: float) -> void:
 	if Input.is_action_pressed("player_primary_weapon_fire") and primary_weapon:
-		primary_weapon.try_fire()
+		var direction = (get_global_mouse_position() - GlobalInstances.player.global_position).normalized()
+		primary_weapon.try_fire(direction)
 
 
 func _handle_secondary_weapon(_delta: float) -> void:
 	if Input.is_action_pressed("player_secondary_weapon_fire") and secondary_weapon:
-		secondary_weapon.try_fire()
+		var direction = (get_global_mouse_position() - GlobalInstances.player.global_position).normalized()
+		secondary_weapon.try_fire(direction)

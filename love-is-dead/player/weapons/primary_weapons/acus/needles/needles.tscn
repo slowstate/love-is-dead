@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://dthqexgwdeomi"]
+
+[ext_resource type="Script" uid="uid://cqs3yfismfgk" path="res://player/weapons/primary_weapons/acus/needles/needles.gd" id="1_pswba"]
+[ext_resource type="Texture2D" uid="uid://ktqbqlmv0h8q" path="res://player/weapons/primary_weapons/acus/needles/needle.png" id="2_4k0xl"]
+
+[node name="Needles" type="Node2D" unique_id=658684759]
+script = ExtResource("1_pswba")
+
+[node name="NeedleSprite" type="Sprite2D" parent="." unique_id=1179551404]
+rotation = 0.7853982
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_4k0xl")
+
+[node name="NeedleSprite2" type="Sprite2D" parent="." unique_id=540036768]
+visible = false
+rotation = 0.7853982
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_4k0xl")
+
+[node name="NeedleSprite3" type="Sprite2D" parent="." unique_id=1480767219]
+visible = false
+rotation = 0.7853982
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_4k0xl")
+
+[node name="NeedleSprite4" type="Sprite2D" parent="." unique_id=1516156791]
+visible = false
+rotation = 0.7853982
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_4k0xl")
+
+[node name="NeedleSprite5" type="Sprite2D" parent="." unique_id=1710561254]
+visible = false
+rotation = 0.7853982
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_4k0xl")
+
+[node name="NeedleSprite6" type="Sprite2D" parent="." unique_id=152095150]
+visible = false
+rotation = 0.7853982
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_4k0xl")
+
+[node name="NeedleSprite7" type="Sprite2D" parent="." unique_id=1673117175]
+visible = false
+rotation = 0.7853982
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_4k0xl")
+
+[node name="NeedleSprite8" type="Sprite2D" parent="." unique_id=37490247]
+visible = false
+rotation = 0.7853982
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_4k0xl")
+
+[node name="NeedleSprite9" type="Sprite2D" parent="." unique_id=1565719540]
+visible = false
+rotation = 0.7853982
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_4k0xl")

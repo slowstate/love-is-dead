@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cjqcpymnnt5lc"]
+
+[ext_resource type="Script" uid="uid://bm0ra3vfa3ii4" path="res://player/weapons/primary_weapons/acus/acus_arrow.gd" id="1_ob005"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ob005"]
+load_path = "res://.godot/imported/allura_arrow.png-276015364cbbbe1627164a31ba764518.ctex"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8mwfm"]
+radius = 4.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oiexx"]
+radius = 5.0
+
+[node name="AcusArrow" type="RigidBody2D" unique_id=1662865429]
+collision_layer = 0
+custom_integrator = true
+continuous_cd = 1
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_ob005")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1118207759]
+rotation = 1.5707964
+scale = Vector2(0.4, 0.4)
+texture = SubResource("CompressedTexture2D_ob005")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=179635321]
+position = Vector2(10, 0)
+shape = SubResource("CircleShape2D_8mwfm")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=807960400]
+rotation = 1.5707964
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=173240634]
+shape = SubResource("CapsuleShape2D_oiexx")

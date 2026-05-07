@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://d3dxtifb6060f"]
+
+[ext_resource type="Script" uid="uid://yll1y4vstpt1" path="res://player/weapons/secondary_weapons/pilum/pilum_projectile.gd" id="1_ramw8"]
+[ext_resource type="Texture2D" uid="uid://db3yrq2m07o4n" path="res://player/weapons/secondary_weapons/spear_of_mars/spear_of_mars.png" id="2_02b1b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o4k53"]
+radius = 3.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gmn31"]
+radius = 3.0
+height = 60.0
+
+[node name="PilumProjectile" type="RigidBody2D" unique_id=1517012434]
+collision_layer = 0
+lock_rotation = true
+custom_integrator = true
+continuous_cd = 1
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_ramw8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1312582996]
+rotation = -1.5707964
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_02b1b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=809694150]
+position = Vector2(26, 0)
+shape = SubResource("CircleShape2D_o4k53")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1926669968]
+rotation = 1.5707964
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1687496152]
+shape = SubResource("CapsuleShape2D_gmn31")

@@ -11,14 +11,14 @@ func _process(delta: float) -> void:
 		return
 
 
-func try_fire() -> bool:
+func try_fire(direction: Vector2) -> bool:
 	if _cooldown_remaining <= 0.0:
 		_cooldown_remaining = cooldown
-		fire()
+		fire(direction)
 		return true
 	else:
 		return false
 
 
-func fire() -> void:
+func fire(_direction: Vector2) -> void:
 	return
