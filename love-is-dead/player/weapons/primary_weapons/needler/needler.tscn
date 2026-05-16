@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://syaupbfdwnu"]
+
+[ext_resource type="Script" uid="uid://c34tarjb6q70m" path="res://player/weapons/primary_weapons/needler/needler.gd" id="1_2s73w"]
+
+[node name="Needler" type="Node2D" unique_id=602676068]
+script = ExtResource("1_2s73w")

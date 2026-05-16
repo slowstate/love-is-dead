@@ -6,14 +6,27 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k06qw"]
 size = Vector2(46, 42)
 
-[node name="Dummy" type="CharacterBody2D" unique_id=679658077]
-collision_layer = 8
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5o04"]
+size = Vector2(46, 42)
+
+[node name="Dummy" type="CharacterBody2D" unique_id=679658077 node_paths=PackedStringArray("sprite", "collision_box", "hurtbox")]
+collision_layer = 0
 script = ExtResource("1_k06qw")
+sprite = NodePath("Sprite2D")
+collision_box = NodePath("CollisionBox")
+hurtbox = NodePath("Hurtbox")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=296050147]
 scale = Vector2(0.375, 0.34375)
 texture = ExtResource("1_tgf5e")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=615238693]
+[node name="CollisionBox" type="CollisionShape2D" parent="." unique_id=615238693]
 shape = SubResource("RectangleShape2D_k06qw")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1157012505]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=404008293]
+shape = SubResource("RectangleShape2D_o5o04")

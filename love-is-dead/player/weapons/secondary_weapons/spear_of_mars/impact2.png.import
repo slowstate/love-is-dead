@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cc0w6205kg7ve"
-path="res://.godot/imported/silver.png-d5d1f7fb137aa41327d660c9c1e59cba.ctex"
+uid="uid://c2pwnxerai4o6"
+path="res://.godot/imported/impact2.png-537297ec953d138a328fb3119d56b27c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/primary_weapon/aureal/silver.png"
-dest_files=["res://.godot/imported/silver.png-d5d1f7fb137aa41327d660c9c1e59cba.ctex"]
+source_file="res://player/weapons/secondary_weapons/spear_of_mars/impact2.png"
+dest_files=["res://.godot/imported/impact2.png-537297ec953d138a328fb3119d56b27c.ctex"]
 
 [params]
 

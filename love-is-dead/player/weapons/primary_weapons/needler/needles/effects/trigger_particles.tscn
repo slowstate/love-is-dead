@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://b6vcahoqgt2f6"]
+
+[ext_resource type="Texture2D" uid="uid://ktqbqlmv0h8q" path="res://player/weapons/primary_weapons/needler/needles/needle.png" id="1_ua4sg"]
+
+[sub_resource type="Curve" id="Curve_4k0xl"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4wl6b"]
+curve = SubResource("Curve_4k0xl")
+
+[sub_resource type="Curve" id="Curve_4l464"]
+_data = [Vector2(0, 1), 0.0, -3.0393925, 0, 0, Vector2(1, 0), 0.0062104054, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dq36u"]
+curve = SubResource("Curve_4l464")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vydln"]
+particle_flag_disable_z = true
+angle_min = -89.99999
+angle_max = 1.0728835e-05
+angular_velocity_min = -40.000015
+angular_velocity_max = 39.999985
+radial_velocity_min = 599.99994
+radial_velocity_max = 799.99994
+radial_velocity_curve = SubResource("CurveTexture_dq36u")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.04
+scale_max = 0.04
+alpha_curve = SubResource("CurveTexture_4wl6b")
+
+[node name="TriggerParticles" type="GPUParticles2D" unique_id=909697400]
+z_index = 1
+emitting = false
+texture = ExtResource("1_ua4sg")
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_vydln")

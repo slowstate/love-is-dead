@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://ni30o2mikxtr"]
+
+[ext_resource type="Script" uid="uid://svlgwq07uych" path="res://player/weapons/primary_weapons/splitter/bolt/splitter_bolt.gd" id="1_i08q0"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hwuqy"]
+load_path = "res://.godot/imported/allura_arrow.png-276015364cbbbe1627164a31ba764518.ctex"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vw3r4"]
+radius = 3.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bqh5h"]
+radius = 4.0
+height = 22.0
+
+[node name="SplitterBolt" type="RigidBody2D" unique_id=182743324 groups=["splitter_bolts"]]
+collision_layer = 0
+gravity_scale = 0.0
+lock_rotation = true
+custom_integrator = true
+continuous_cd = 1
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_i08q0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1460394066]
+modulate = Color(1, 1, 0, 0.5)
+rotation = 1.5707964
+scale = Vector2(0.3, 0.3)
+texture = SubResource("CompressedTexture2D_hwuqy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=827772901]
+position = Vector2(7, 0)
+shape = SubResource("CircleShape2D_vw3r4")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1369850823]
+rotation = 1.5707964
+collision_layer = 4
+collision_mask = 10
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1697160910]
+shape = SubResource("CapsuleShape2D_bqh5h")
