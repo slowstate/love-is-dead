@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dthqexgwdeomi"]
 
-[ext_resource type="Script" uid="uid://cqs3yfismfgk" path="res://player/weapons/primary_weapons/acus/needles/needles.gd" id="1_pswba"]
-[ext_resource type="Texture2D" uid="uid://ktqbqlmv0h8q" path="res://player/weapons/primary_weapons/acus/needles/needle.png" id="2_4k0xl"]
+[ext_resource type="Script" uid="uid://cqs3yfismfgk" path="res://player/weapons/primary_weapons/needler/needles/needles.gd" id="1_pswba"]
+[ext_resource type="Texture2D" uid="uid://ktqbqlmv0h8q" path="res://player/weapons/primary_weapons/needler/needles/needle.png" id="2_4k0xl"]
 
 [node name="Needles" type="Node2D" unique_id=658684759]
 script = ExtResource("1_pswba")

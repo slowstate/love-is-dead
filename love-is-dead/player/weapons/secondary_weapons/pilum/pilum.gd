@@ -3,10 +3,6 @@ extends Weapon
 
 const PILUM_PROJECTILE = preload("uid://d3dxtifb6060f")
 
-var _lifetime: float = 3.0
-var _speed: float = 1000.0
-var _damage: float = 20.0
-
 
 func _init() -> void:
 	cooldown = 2.0
@@ -16,10 +12,6 @@ func fire(direction: Vector2) -> void:
 	var pilum: PilumProjectile = PILUM_PROJECTILE.instantiate()
 	pilum.rotation = direction.angle()
 	pilum.global_position = GlobalInstances.player.global_position
-	pilum.lifetime = _lifetime
-	pilum.speed = _speed
-	pilum.damage = _damage
-	pilum.gravity_scale = 0.0
 	pilum.enemy_killed.connect(_on_enemy_killed)
 	Engine.get_main_loop().current_scene.add_child(pilum)
 	pilum.fire(direction)

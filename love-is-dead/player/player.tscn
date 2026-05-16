@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cga4sdhwe3a6r"]
 
 [ext_resource type="Script" uid="uid://ck0itwqj3h41c" path="res://player/player.gd" id="1_oul6g"]
+[ext_resource type="Resource" uid="uid://vlil7nxq3xye" path="res://player/weapons/weapon_loadouts/loadout_2.tres" id="2_rkbax"]
 
 [sub_resource type="Gradient" id="Gradient_rkbax"]
 offsets = PackedFloat32Array(1)
@@ -18,9 +19,9 @@ size = Vector2(16, 24)
 collision_layer = 2
 script = ExtResource("1_oul6g")
 ground_friction = 0.7
+player_weapon_loadout = ExtResource("2_rkbax")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=370156447]
-zoom = Vector2(0.66, 0.66)
 process_callback = 0
 position_smoothing_enabled = true
 

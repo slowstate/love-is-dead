@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponLoadout" format=3 uid="uid://vlil7nxq3xye"]
+
+[ext_resource type="PackedScene" uid="uid://byymsbevoo7kb" path="res://player/weapons/primary_weapons/splitter/splitter.tscn" id="1_l1u6p"]
+[ext_resource type="Script" uid="uid://b2wlwu52rhv4r" path="res://player/weapons/weapon_loadouts/weapon_loadout.gd" id="1_mo5kr"]
+[ext_resource type="PackedScene" uid="uid://c2hrrdyf3wda8" path="res://player/weapons/secondary_weapons/quiver/quiver.tscn" id="3_l1u6p"]
+
+[resource]
+script = ExtResource("1_mo5kr")
+primary_weapon = ExtResource("1_l1u6p")
+secondary_weapon = ExtResource("3_l1u6p")
+metadata/_custom_type_script = "uid://b2wlwu52rhv4r"

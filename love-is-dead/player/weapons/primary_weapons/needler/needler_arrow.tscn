@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cjqcpymnnt5lc"]
 
-[ext_resource type="Script" uid="uid://bm0ra3vfa3ii4" path="res://player/weapons/primary_weapons/acus/acus_arrow.gd" id="1_ob005"]
+[ext_resource type="Script" uid="uid://bm0ra3vfa3ii4" path="res://player/weapons/primary_weapons/needler/needler_arrow.gd" id="1_ob005"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ob005"]
 load_path = "res://.godot/imported/allura_arrow.png-276015364cbbbe1627164a31ba764518.ctex"
@@ -11,8 +11,9 @@ radius = 4.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oiexx"]
 radius = 5.0
 
-[node name="AcusArrow" type="RigidBody2D" unique_id=1662865429]
+[node name="NeedlerArrow" type="RigidBody2D" unique_id=1662865429]
 collision_layer = 0
+gravity_scale = 0.0
 custom_integrator = true
 continuous_cd = 1
 contact_monitor = true

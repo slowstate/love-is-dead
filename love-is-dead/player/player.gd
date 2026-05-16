@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 # --- External Parameters -----------------------------------------------------
 # --- Movement ---
-@export var speed: float = 200.0
+@export var speed: float = 150.0
 @export var acceleration: float = 1500.0
 @export_range(0.0, 1.0, 0.1) var air_control: float = 0.4 # Multiplier for acceleration in the air
 @export_range(0.0, 1.0, 0.1) var ground_friction: float = 0.8
@@ -11,12 +11,14 @@ extends CharacterBody2D
 @export var jump_velocity: float = -320.0
 @export var extra_jumps: int = 0
 @export var ladder_climb_speed: float = 8000.0
-# --- Combat ---
-@export var primary_weapon: Weapon
-@export var secondary_weapon: Weapon
 @export var ladder_tile_map_layer: TileMapLayer
+# --- Combat ---
+@export var player_weapon_loadout: WeaponLoadout
 
 # --- Internal Parameters -----------------------------------------------------
+# --- Combat ---
+var primary_weapon: Weapon
+var secondary_weapon: Weapon
 # --- Movement ---
 var _jumps_remaining: int = 0
 var _on_ladder: bool = false
@@ -33,10 +35,10 @@ func _init() -> void:
 
 
 func _ready() -> void:
-	if GlobalInstances.player_weapon_loadout:
-		primary_weapon = GlobalInstances.player_weapon_loadout.primary_weapon.instantiate()
+	if player_weapon_loadout:
+		primary_weapon = player_weapon_loadout.primary_weapon.instantiate()
 		add_child(primary_weapon)
-		secondary_weapon = GlobalInstances.player_weapon_loadout.secondary_weapon.instantiate()
+		secondary_weapon = player_weapon_loadout.secondary_weapon.instantiate()
 		add_child(secondary_weapon)
 
 

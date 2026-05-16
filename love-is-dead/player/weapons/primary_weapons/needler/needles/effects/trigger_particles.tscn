@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b6vcahoqgt2f6"]
 
-[ext_resource type="Texture2D" uid="uid://ktqbqlmv0h8q" path="res://player/weapons/primary_weapons/acus/needles/needle.png" id="1_ua4sg"]
+[ext_resource type="Texture2D" uid="uid://ktqbqlmv0h8q" path="res://player/weapons/primary_weapons/needler/needles/needle.png" id="1_ua4sg"]
 
 [sub_resource type="Curve" id="Curve_4k0xl"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]

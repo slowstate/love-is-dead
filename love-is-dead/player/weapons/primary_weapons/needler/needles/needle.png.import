@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ktqbqlmv0h8q"
-path="res://.godot/imported/needle.png-53c3e502237e333e2fb674d7db775746.ctex"
+path="res://.godot/imported/needle.png-1d14448747f3d044a948eec3f6f09e70.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/weapons/primary_weapons/acus/needles/needle.png"
-dest_files=["res://.godot/imported/needle.png-53c3e502237e333e2fb674d7db775746.ctex"]
+source_file="res://player/weapons/primary_weapons/needler/needles/needle.png"
+dest_files=["res://.godot/imported/needle.png-1d14448747f3d044a948eec3f6f09e70.ctex"]
 
 [params]
 

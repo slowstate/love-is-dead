@@ -6,11 +6,12 @@ signal enemy_killed
 
 const NEEDLES = preload("uid://dthqexgwdeomi")
 
-var lifetime: float = 1.0
+var lifetime: float = 1.5
 var speed: float = 2000.0
 var damage: float = 20.0
 var _lifetime_elapsed: float = 0.0
 var _needles_carried: int = 0
+var _has_hit: bool = false
 
 @onready var hitbox: Area2D = $Hitbox
 
@@ -44,7 +45,8 @@ func _on_terrain_entered(_body: Node2D) -> void:
 
 func _on_enemy_entered(enemy_hurtbox: Area2D) -> void:
 	var enemy = enemy_hurtbox.owner as Enemy
-	if enemy != null and enemy is Enemy:
+	if enemy != null and enemy is Enemy and !_has_hit:
+		_has_hit = true
 		if !ComponentUtils.has_component(enemy, Needles.string_name) and _needles_carried > 0:
 			var needles = NEEDLES.instantiate()
 			enemy.add_child(needles)
@@ -55,5 +57,6 @@ func _on_enemy_entered(enemy_hurtbox: Area2D) -> void:
 			needles.trigger_needles()
 		enemy.take_damage(damage)
 		if !enemy or enemy.current_health <= 0.0: # If enemy died, pilum penetrates
+			_has_hit = false
 			return
 		queue_free()
