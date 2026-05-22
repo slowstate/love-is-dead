@@ -8,9 +8,9 @@ const ENEMY_HEALTH_BAR = preload("uid://dq4egh1tw0vis")
 # --- External Parameters -----------------------------------------------------
 @export var speed: float = 50.0
 @export var max_health: float = 200.0
-@export var animated_sprite: AnimatedSprite2D
 @export var collision_box: CollisionShape2D
 @export var hurtbox: Area2D
+@export var pivot: Node2D
 
 var current_health: float
 var health_bar: ProgressBar
@@ -32,12 +32,6 @@ func _ready() -> void:
 	current_health = max_health
 	generate_ui()
 	_setup()
-
-	#func _physics_process(delta: float) -> void:
-	#_apply_gravity(delta)
-	#chase_on_ground(delta)
-
-	#move_and_slide()
 
 
 func chase_on_ground(_delta: float):
@@ -87,3 +81,11 @@ func _requiredFieldsAreConfigured() -> bool:
 func _apply_gravity(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += GlobalConstants.gravity * delta
+
+
+func _set_facing_right(is_facing_right: bool) -> void:
+	pivot.scale.x = 1 if is_facing_right else -1
+
+
+func _flip_facing_direction() -> void:
+	pivot.scale.x *= -1

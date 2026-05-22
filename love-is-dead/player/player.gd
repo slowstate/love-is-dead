@@ -56,6 +56,11 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
+func take_damage(amount: int) -> void:
+	current_health = maxi(current_health - amount, 0)
+	_update_current_health_label()
+
+
 # --- Movement ----------------------------------------------------------------
 func _apply_gravity(delta: float) -> void:
 	if not is_on_floor():
@@ -171,11 +176,6 @@ func _handle_secondary_weapon(_delta: float) -> void:
 	if Input.is_action_pressed("player_secondary_weapon_fire") and secondary_weapon:
 		var direction = (get_global_mouse_position() - GlobalInstances.player.global_position).normalized()
 		secondary_weapon.try_fire(direction)
-
-
-func _take_damage(amount: int) -> void:
-	current_health = maxi(current_health - amount, 0)
-	_update_current_health_label()
 
 
 func _update_current_health_label() -> void:

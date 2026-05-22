@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4llsqr5udjl"
-path="res://.godot/imported/minion_sprite.png-bb37118ad71b2e9de6c3c1bd19e36459.ctex"
+uid="uid://cdd8q5vqpwn07"
+path="res://.godot/imported/projectile.png-ef0edf9fac6faf0b9b1742ca0f7e65ed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/minion/minion_sprite.png"
-dest_files=["res://.godot/imported/minion_sprite.png-bb37118ad71b2e9de6c3c1bd19e36459.ctex"]
+source_file="res://enemies/ranged_minion/projectile/projectile.png"
+dest_files=["res://.godot/imported/projectile.png-ef0edf9fac6faf0b9b1742ca0f7e65ed.ctex"]
 
 [params]
 

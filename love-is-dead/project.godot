@@ -35,6 +35,7 @@ enabled=PackedStringArray("res://addons/GDQuest_GDScript_formatter/plugin.cfg")
 [global_group]
 
 splitter_bolts=""
+enemies=""
 
 [input]
 
@@ -93,6 +94,7 @@ player_secondary_weapon_fire={
 2d_physics/layer_4="enemy"
 2d_physics/layer_5="ladder"
 2d_physics/layer_6="player_hurtbox"
+2d_physics/layer_7="enemy_attack"
 
 [physics]
 

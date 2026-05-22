@@ -15,6 +15,7 @@ func enter() -> void:
 
 
 func exit() -> void:
+	minion.hurtbox.monitorable = true
 	minion.chase_detector.monitoring = true
 	minion.attack_detector.monitoring = true
 	timer.stop()

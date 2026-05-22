@@ -1,13 +1,147 @@
 [gd_scene format=3 uid="uid://uyc02gsgp57j"]
 
 [ext_resource type="Script" uid="uid://cyikwxu6wu12c" path="res://enemies/minion/minion.gd" id="1_ln1hn"]
-[ext_resource type="Texture2D" uid="uid://c4llsqr5udjl" path="res://enemies/minion/minion_sprite.png" id="2_cyxrl"]
+[ext_resource type="Texture2D" uid="uid://c4llsqr5udjl" path="res://enemies/minion/minion_sprite_sheet.png" id="2_cyxrl"]
 [ext_resource type="Script" uid="uid://tu2tpvsvotmt" path="res://common/state_machine/state_machine.gd" id="3_hsho4"]
 [ext_resource type="Script" uid="uid://dp2thfegvgxq2" path="res://enemies/minion/minion_spawn_state.gd" id="4_4jrdc"]
 [ext_resource type="Script" uid="uid://4jdo7pnq5rmv" path="res://enemies/minion/minion_idle_state.gd" id="4_w4jfs"]
 [ext_resource type="Script" uid="uid://bg4ndlmcfty4m" path="res://enemies/minion/minion_roam_state.gd" id="5_4jrdc"]
 [ext_resource type="Script" uid="uid://diyv40sbrc7tg" path="res://enemies/minion/minion_attack_state.gd" id="6_xits6"]
 [ext_resource type="Script" uid="uid://b4uo1b1cgesri" path="res://enemies/minion/minion_chase_state.gd" id="7_4jrdc"]
+
+[sub_resource type="Animation" id="Animation_4jrdc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_xits6"]
+resource_name = "attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"attack"]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.43333334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_check_attack_hit"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_06m2e"]
+resource_name = "idle"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+
+[sub_resource type="Animation" id="Animation_q4vxc"]
+resource_name = "walk"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walk"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ym0rx"]
+_data = {
+&"RESET": SubResource("Animation_4jrdc"),
+&"attack": SubResource("Animation_xits6"),
+&"idle": SubResource("Animation_06m2e"),
+&"walk": SubResource("Animation_q4vxc")
+}
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cyxrl"]
 radius = 6.0
@@ -187,14 +321,17 @@ height = 18.0
 radius = 8.539991
 height = 25.94224
 
-[node name="Minion" type="CharacterBody2D" unique_id=157946489 node_paths=PackedStringArray("animated_sprite", "collision_box", "hurtbox")]
+[node name="Minion" type="CharacterBody2D" unique_id=157946489 node_paths=PackedStringArray("collision_box", "hurtbox", "pivot") groups=["enemies"]]
 collision_layer = 0
 script = ExtResource("1_ln1hn")
-animated_sprite = NodePath("Pivot/AnimatedSprite2D")
-collision_box = NodePath("CollisionShape2D")
+collision_box = NodePath("CollisionBox")
 hurtbox = NodePath("Pivot/Hurtbox")
+pivot = NodePath("Pivot")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1514415559]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=404092159]
+libraries/ = SubResource("AnimationLibrary_ym0rx")
+
+[node name="CollisionBox" type="CollisionShape2D" parent="." unique_id=1514415559]
 shape = SubResource("CapsuleShape2D_cyxrl")
 
 [node name="Pivot" type="Node2D" parent="." unique_id=1511472724]
@@ -202,13 +339,13 @@ shape = SubResource("CapsuleShape2D_cyxrl")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pivot" unique_id=757192083]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_tkh2v")
-animation = &"attack"
-frame = 3
-frame_progress = 0.6672263
+animation = &"idle"
 
 [node name="Hurtbox" type="Area2D" parent="Pivot" unique_id=1632148215]
 collision_layer = 8
-collision_mask = 4
+collision_mask = 0
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/Hurtbox" unique_id=287654878]
 shape = SubResource("CapsuleShape2D_dibu8")
