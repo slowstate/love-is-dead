@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b2nv3sotnrhql"]
+
+[ext_resource type="Script" uid="uid://c42ukhypkn6a7" path="res://player/weapons/primary_weapons/allura/allura.gd" id="1_hxjm0"]
+
+[node name="Allura" type="Node2D" unique_id=1018357353]
+script = ExtResource("1_hxjm0")

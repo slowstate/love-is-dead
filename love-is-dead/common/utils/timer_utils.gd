@@ -1,5 +1,4 @@
 class_name TimerUtils
-extends Node
 
 
 static func timer_progress(timer: Timer) -> float:

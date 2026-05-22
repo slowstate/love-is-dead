@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://byymsbevoo7kb"]
+
+[ext_resource type="Script" uid="uid://bxbjoic66h4fx" path="res://player/weapons/primary_weapons/splitter/splitter.gd" id="1_p4y73"]
+
+[node name="Fulmen" type="Node2D" unique_id=635000252]
+script = ExtResource("1_p4y73")

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bvmnh8iul0pjn"]
+
+[ext_resource type="Script" uid="uid://bgcjnsr6jn304" path="res://player/weapons/secondary_weapons/spear_of_mars/spear_of_mars.gd" id="1_ja68h"]
+
+[node name="SpearOfMarsSpear" type="Node2D" unique_id=2140850524]
+script = ExtResource("1_ja68h")

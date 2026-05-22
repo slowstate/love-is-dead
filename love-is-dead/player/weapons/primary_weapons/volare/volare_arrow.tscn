@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bcfm8c5gces34"]
+
+[ext_resource type="Script" uid="uid://crbexhwtx8ncq" path="res://player/weapons/primary_weapons/volare/volare_arrow.gd" id="1_mssdx"]
+[ext_resource type="Texture2D" uid="uid://8avymsi0bery" path="res://player/weapons/primary_weapons/volare/volare_arrow.png" id="2_jsb4o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mssdx"]
+radius = 4.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mssdx"]
+radius = 5.0
+
+[node name="VolareArrow" type="RigidBody2D" unique_id=1352085033]
+collision_layer = 4
+custom_integrator = true
+continuous_cd = 1
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_mssdx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1331848689]
+modulate = Color(1, 0, 1, 1)
+rotation = 1.5707964
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_jsb4o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1967448713]
+position = Vector2(10, 0)
+shape = SubResource("CircleShape2D_mssdx")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=793231275]
+rotation = 1.5707964
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1487595384]
+shape = SubResource("CapsuleShape2D_mssdx")

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponLoadout" format=3 uid="uid://8camxd64t4n7"]
+
+[ext_resource type="PackedScene" uid="uid://syaupbfdwnu" path="res://player/weapons/primary_weapons/needler/needler.tscn" id="1_nvsa3"]
+[ext_resource type="Script" uid="uid://b2wlwu52rhv4r" path="res://player/weapons/weapon_loadouts/weapon_loadout.gd" id="1_tfxj3"]
+[ext_resource type="PackedScene" uid="uid://p774jsc4igej" path="res://player/weapons/secondary_weapons/pilum/pilum.tscn" id="3_nvsa3"]
+
+[resource]
+script = ExtResource("1_tfxj3")
+primary_weapon = ExtResource("1_nvsa3")
+secondary_weapon = ExtResource("3_nvsa3")
+metadata/_custom_type_script = "uid://b2wlwu52rhv4r"

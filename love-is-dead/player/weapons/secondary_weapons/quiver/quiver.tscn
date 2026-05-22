@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c2hrrdyf3wda8"]
+
+[ext_resource type="Script" uid="uid://b21qm71xe3p6c" path="res://player/weapons/secondary_weapons/quiver/quiver.gd" id="1_8is12"]
+
+[node name="Quiver" type="Node2D" unique_id=618385004]
+script = ExtResource("1_8is12")
