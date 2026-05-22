@@ -14,6 +14,8 @@ extends CharacterBody2D
 @export var ladder_tile_map_layer: TileMapLayer
 # --- Combat ---
 @export var player_weapon_loadout: WeaponLoadout
+@export var max_health: int = 100
+@export var current_health: int = 100
 
 # --- Internal Parameters -----------------------------------------------------
 # --- Combat ---
@@ -27,6 +29,7 @@ var _on_ladder: bool = false
 @onready var ladder_detector_up: RayCast2D = $LadderDetectorUp
 @onready var ladder_collision_detector: RayCast2D = $LadderCollisionDetector
 @onready var collision_box: CollisionShape2D = $CollisionBox
+@onready var current_health_label: Label = $UserInterface/CurrentHealthLabel
 
 
 # --- Functions ---------------------------------------------------------------
@@ -35,6 +38,7 @@ func _init() -> void:
 
 
 func _ready() -> void:
+	_update_current_health_label()
 	if player_weapon_loadout:
 		primary_weapon = player_weapon_loadout.primary_weapon.instantiate()
 		add_child(primary_weapon)
@@ -167,3 +171,12 @@ func _handle_secondary_weapon(_delta: float) -> void:
 	if Input.is_action_pressed("player_secondary_weapon_fire") and secondary_weapon:
 		var direction = (get_global_mouse_position() - GlobalInstances.player.global_position).normalized()
 		secondary_weapon.try_fire(direction)
+
+
+func _take_damage(amount: int) -> void:
+	current_health = maxi(current_health - amount, 0)
+	_update_current_health_label()
+
+
+func _update_current_health_label() -> void:
+	current_health_label.text = "🤍" + str(current_health)

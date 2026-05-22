@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://b1b8k16nahj2v"]
 
 [ext_resource type="PackedScene" uid="uid://cga4sdhwe3a6r" path="res://player/player.tscn" id="1_vos54"]
-[ext_resource type="PackedScene" uid="uid://c201l8guxiqhp" path="res://enemy/dummy/dummy.tscn" id="2_6gs2s"]
+[ext_resource type="PackedScene" uid="uid://c201l8guxiqhp" path="res://enemies/dummy/dummy.tscn" id="2_6gs2s"]
 [ext_resource type="Script" uid="uid://i3d782jnmfbg" path="res://sandbox/enemy_counter.gd" id="3_djyae"]
 [ext_resource type="Script" uid="uid://cohoikeomgs7m" path="res://sandbox/spawn_enemy_button.gd" id="3_id76k"]
 [ext_resource type="TileSet" uid="uid://dfqqfyblud4u8" path="res://stages/placeholder_tile_set.tres" id="4_sk0q6"]
