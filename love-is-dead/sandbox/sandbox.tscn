@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://b1b8k16nahj2v"]
 
 [ext_resource type="PackedScene" uid="uid://cga4sdhwe3a6r" path="res://player/player.tscn" id="1_vos54"]
-[ext_resource type="PackedScene" uid="uid://c201l8guxiqhp" path="res://enemy/dummy/dummy.tscn" id="2_6gs2s"]
+[ext_resource type="Script" uid="uid://6jfberas0bql" path="res://sandbox/clear_button.gd" id="2_sk0q6"]
 [ext_resource type="Script" uid="uid://i3d782jnmfbg" path="res://sandbox/enemy_counter.gd" id="3_djyae"]
 [ext_resource type="Script" uid="uid://cohoikeomgs7m" path="res://sandbox/spawn_enemy_button.gd" id="3_id76k"]
 [ext_resource type="TileSet" uid="uid://dfqqfyblud4u8" path="res://stages/placeholder_tile_set.tres" id="4_sk0q6"]
@@ -13,24 +13,45 @@ size = Vector2(2246, 204)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=568878381]
 
-[node name="SpawnEnemyButton" type="Button" parent="CanvasLayer" unique_id=649742348]
-offset_left = 559.0
-offset_top = 46.0
-offset_right = 621.0
-offset_bottom = 66.0
-theme_override_font_sizes/font_size = 8
-text = "Spawn Enemy"
-script = ExtResource("3_id76k")
-enemy_scene = ExtResource("2_6gs2s")
+[node name="EnemySpawnPanel" type="VBoxContainer" parent="CanvasLayer" unique_id=651042111]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -204.0
+offset_bottom = 40.0
+grow_horizontal = 0
 
-[node name="EnemyCounter" type="Label" parent="CanvasLayer" unique_id=521524819]
-offset_left = 559.0
-offset_top = 16.0
-offset_right = 621.0
-offset_bottom = 39.0
+[node name="EnemyCounter" type="Label" parent="CanvasLayer/EnemySpawnPanel" unique_id=521524819]
+layout_mode = 2
 theme_override_font_sizes/font_size = 8
+text = "Enemies: 0"
 horizontal_alignment = 1
 script = ExtResource("3_djyae")
+
+[node name="ClearButton" type="Button" parent="CanvasLayer/EnemySpawnPanel" unique_id=859674164]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Clear"
+script = ExtResource("2_sk0q6")
+
+[node name="EnemySpawnButtons" type="GridContainer" parent="CanvasLayer/EnemySpawnPanel" unique_id=850653750]
+layout_mode = 2
+columns = 4
+
+[node name="SpawnMinionButton" type="Button" parent="CanvasLayer/EnemySpawnPanel/EnemySpawnButtons" unique_id=649742348]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Spawn Minion"
+script = ExtResource("3_id76k")
+
+[node name="SpawnRangedMinionyButton2" type="Button" parent="CanvasLayer/EnemySpawnPanel/EnemySpawnButtons" unique_id=27201174]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Spawn Ranged Minion"
+script = ExtResource("3_id76k")
+enemy_type = 1
 
 [node name="Stage" type="Node2D" parent="." unique_id=12590852]
 z_index = 1
@@ -46,10 +67,9 @@ tile_set = ExtResource("4_sk0q6")
 position = Vector2(4, 516)
 shape = SubResource("RectangleShape2D_6gs2s")
 
-[node name="EnemyList" type="Node2D" parent="Stage" unique_id=623612382]
-position = Vector2(427, -265)
-
 [node name="Player" parent="." unique_id=1520943966 instance=ExtResource("1_vos54")]
 position = Vector2(0, 587)
 
-[connection signal="pressed" from="CanvasLayer/SpawnEnemyButton" to="CanvasLayer/SpawnEnemyButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/EnemySpawnPanel/ClearButton" to="CanvasLayer/EnemySpawnPanel/ClearButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/EnemySpawnPanel/EnemySpawnButtons/SpawnMinionButton" to="CanvasLayer/EnemySpawnPanel/EnemySpawnButtons/SpawnMinionButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/EnemySpawnPanel/EnemySpawnButtons/SpawnRangedMinionyButton2" to="CanvasLayer/EnemySpawnPanel/EnemySpawnButtons/SpawnRangedMinionyButton2" method="_on_pressed"]

@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dxlvvvx0vrwk3"]
+
+[ext_resource type="Script" uid="uid://crkvh7a0wbrxi" path="res://enemies/ranged_minion/projectile/ranged_minion_projectile.gd" id="1_jeba6"]
+[ext_resource type="Texture2D" uid="uid://cdd8q5vqpwn07" path="res://enemies/ranged_minion/projectile/projectile.png" id="2_sm7sj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8n0ar"]
+radius = 3.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y5yev"]
+radius = 2.0
+height = 18.0
+
+[node name="RangedMinionProjectile" type="RigidBody2D" unique_id=1939307773]
+collision_layer = 0
+gravity_scale = 0.0
+custom_integrator = true
+continuous_cd = 1
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_jeba6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=330879224]
+texture_filter = 1
+position = Vector2(0, -0.5)
+texture = ExtResource("2_sm7sj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=155591968]
+position = Vector2(6, 0)
+shape = SubResource("CircleShape2D_8n0ar")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1232923870]
+rotation = 1.5707964
+collision_layer = 64
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1992817524]
+shape = SubResource("CapsuleShape2D_y5yev")

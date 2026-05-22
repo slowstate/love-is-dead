@@ -2,6 +2,7 @@ class_name StateMachine
 extends Node
 
 @export var current_state: State
+@export var print_state_changes: bool = false
 
 var states: Dictionary = { }
 
@@ -35,8 +36,8 @@ func set_state(new_state_name: StringName) -> void:
 func _on_child_transition(new_state_name: StringName) -> void:
 	var new_state = states.get(new_state_name)
 	if new_state != null:
-		if new_state != current_state:
-			#print_debug("Current state: " + str(current_state.name) + " | New state: " + str(new_state.name))
-			current_state.exit()
-			new_state.enter()
-			current_state = new_state
+		if print_state_changes:
+			print_debug("Current state: " + str(current_state.name) + " | New state: " + str(new_state.name))
+		current_state.exit()
+		new_state.enter()
+		current_state = new_state

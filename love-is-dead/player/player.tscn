@@ -15,6 +15,10 @@ height = 24
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yw30f"]
 size = Vector2(16, 24)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rkbax"]
+radius = 8.0
+height = 24.0
+
 [node name="Player" type="CharacterBody2D" unique_id=1520943966]
 collision_layer = 2
 script = ExtResource("1_oul6g")
@@ -47,3 +51,17 @@ hit_from_inside = true
 position = Vector2(0, 1)
 target_position = Vector2(0, -24)
 hit_from_inside = true
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1137921022]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=577335834]
+shape = SubResource("CapsuleShape2D_rkbax")
+
+[node name="UserInterface" type="CanvasLayer" parent="." unique_id=1499562668]
+
+[node name="CurrentHealthLabel" type="Label" parent="UserInterface" unique_id=1741436567]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "🤍100"
