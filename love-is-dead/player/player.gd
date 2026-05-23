@@ -21,6 +21,9 @@ extends CharacterBody2D
 # --- Combat ---
 var primary_weapon: Weapon
 var secondary_weapon: Weapon
+var primary_weapon_firing: bool = false
+var secondary_weapon_firing: bool = false
+var died: bool = false
 # --- Movement ---
 var _jumps_remaining: int = 0
 var _on_ladder: bool = false
@@ -30,6 +33,9 @@ var _on_ladder: bool = false
 @onready var ladder_collision_detector: RayCast2D = $LadderCollisionDetector
 @onready var collision_box: CollisionShape2D = $CollisionBox
 @onready var current_health_label: Label = $UserInterface/CurrentHealthLabel
+@onready var death_screen: CanvasLayer = $DeathScreen
+@onready var respawn_button: Button = $DeathScreen/VBoxContainer/RespawnButton
+@onready var hurtbox: Area2D = $Hurtbox
 
 
 # --- Functions ---------------------------------------------------------------
@@ -38,27 +44,47 @@ func _init() -> void:
 
 
 func _ready() -> void:
+	death_screen.visible = false
 	_update_current_health_label()
 	if player_weapon_loadout:
 		primary_weapon = player_weapon_loadout.primary_weapon.instantiate()
 		add_child(primary_weapon)
 		secondary_weapon = player_weapon_loadout.secondary_weapon.instantiate()
 		add_child(secondary_weapon)
+	if !respawn_button.pressed.is_connected(_on_respawn_button_pressed):
+		respawn_button.pressed.connect(_on_respawn_button_pressed)
 
 
 func _physics_process(delta: float) -> void:
-	_handle_primary_weapon(delta)
-	_handle_secondary_weapon(delta)
 	_apply_gravity(delta)
-	_handle_jump()
-	_handle_horizontal_movement(delta)
-	_handle_ladder_movement(delta)
+	if !died:
+		_handle_primary_weapon(delta)
+		_handle_secondary_weapon(delta)
+		_handle_jump()
+		_handle_horizontal_movement(delta)
+		_handle_ladder_movement(delta)
 	move_and_slide()
 
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("player_primary_weapon_fire") and primary_weapon:
+		primary_weapon_firing = true
+	if event.is_action_released("player_primary_weapon_fire") and primary_weapon:
+		primary_weapon_firing = false
+
+	if event.is_action_pressed("player_secondary_weapon_fire") and secondary_weapon:
+		secondary_weapon_firing = true
+	if event.is_action_released("player_secondary_weapon_fire") and secondary_weapon:
+		secondary_weapon_firing = false
+
+
 func take_damage(amount: int) -> void:
+	if died:
+		return
 	current_health = maxi(current_health - amount, 0)
 	_update_current_health_label()
+	if current_health <= 0:
+		_on_player_death()
 
 
 # --- Movement ----------------------------------------------------------------
@@ -167,16 +193,25 @@ func _handle_ladder_movement(delta: float) -> void:
 
 # --- Combat ------------------------------------------------------------------
 func _handle_primary_weapon(_delta: float) -> void:
-	if Input.is_action_pressed("player_primary_weapon_fire") and primary_weapon:
+	if primary_weapon_firing:
 		var direction = (get_global_mouse_position() - GlobalInstances.player.global_position).normalized()
 		primary_weapon.try_fire(direction)
 
 
 func _handle_secondary_weapon(_delta: float) -> void:
-	if Input.is_action_pressed("player_secondary_weapon_fire") and secondary_weapon:
+	if secondary_weapon_firing:
 		var direction = (get_global_mouse_position() - GlobalInstances.player.global_position).normalized()
 		secondary_weapon.try_fire(direction)
 
 
 func _update_current_health_label() -> void:
 	current_health_label.text = "🤍" + str(current_health)
+
+
+func _on_player_death() -> void:
+	death_screen.visible = true
+	died = true
+
+
+func _on_respawn_button_pressed() -> void:
+	get_tree().reload_current_scene()

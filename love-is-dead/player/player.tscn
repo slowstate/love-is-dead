@@ -19,6 +19,11 @@ size = Vector2(16, 24)
 radius = 8.0
 height = 24.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_rkbax"]
+font_size = 32
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rkbax"]
+
 [node name="Player" type="CharacterBody2D" unique_id=1520943966]
 collision_layer = 2
 script = ExtResource("1_oul6g")
@@ -65,3 +70,38 @@ shape = SubResource("CapsuleShape2D_rkbax")
 offset_right = 40.0
 offset_bottom = 23.0
 text = "🤍100"
+
+[node name="DeathScreen" type="CanvasLayer" parent="." unique_id=352060535]
+visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DeathScreen" unique_id=759699304]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -69.0
+offset_top = -40.0
+offset_right = 69.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="YouDiedLabel" type="Label" parent="DeathScreen/VBoxContainer" unique_id=1008965394]
+layout_mode = 2
+text = "You Died"
+label_settings = SubResource("LabelSettings_rkbax")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="DeathScreen/VBoxContainer" unique_id=638246428]
+layout_mode = 2
+theme_override_constants/separation = 32
+theme_override_styles/separator = SubResource("StyleBoxEmpty_rkbax")
+
+[node name="RespawnButton" type="Button" parent="DeathScreen/VBoxContainer" unique_id=1782303998]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Respawn"
